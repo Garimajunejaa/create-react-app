@@ -98,40 +98,14 @@ When users install your app to the homescreen of their device the default config
   "start_url": ".",
 ```
 
-## Building for Relative Paths
+### Setting the `homepage` in `package.json`
 
-By default, Create React App produces a build assuming your app is hosted at the server root.
-
-To override this, specify the `homepage` in your `package.json`, for example:
-
-```js
-  "homepage": "http://mywebsite.com/relativepath",
-```
-
-This will let Create React App correctly infer the root path to use in the generated HTML file.
-
-**Note**: If you are using `react-router@^4`, you can root `<Link>`s using the `basename` prop on any `<Router>`.
-
-More information [here](https://reacttraining.com/react-router/web/api/BrowserRouter/basename-string).
+When deploying your app to a subdirectory (for example, GitHub Pages at `https://username.github.io/my-app/`), it's important to set the `homepage` field in your `package.json` file. This ensures that all static asset paths are correctly generated in the final production build.
 
 For example:
+```json
+"homepage": "https://username.github.io/my-app".
 
-```js
-<BrowserRouter basename="/calendar"/>
-<Link to="/today"/> // renders <a href="/calendar/today">
-```
-
-### Serving the Same Build from Different Paths
-
-> Note: this feature is available with `react-scripts@0.9.0` and higher.
-
-If you are not using the HTML5 `pushState` history API or not using client-side routing at all, it is unnecessary to specify the URL from which your app will be served. Instead, you can put this in your `package.json`:
-
-```js
-  "homepage": ".",
-```
-
-This will make sure that all the asset paths are relative to `index.html`. You will then be able to move your app from `http://mywebsite.com` to `http://mywebsite.com/relativepath` or even `http://mywebsite.com/relative/path` without having to rebuild it.
 
 ## Customizing Environment Variables for Arbitrary Build Environments
 
